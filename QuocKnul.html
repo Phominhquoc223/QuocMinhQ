@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ Tương Tác | MyWebsite</title>
+    <title>Trang Chủ | MyWebsite</title>
     <style>
         * {
             margin: 0;
@@ -15,18 +15,18 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #0f172a;
             color: #f8fafc;
+            line-height: 1.6;
+            padding: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
         }
 
         .container {
-            width: 100%;
-            max-width: 480px;
+            max-width: 600px;
             background-color: #1e293b;
-            padding: 36px;
+            padding: 40px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             text-align: center;
@@ -34,8 +34,8 @@
         }
 
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
+            font-size: 2rem;
+            margin-bottom: 16px;
             background: linear-gradient(135deg, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -44,137 +44,31 @@
         p {
             color: #94a3b8;
             margin-bottom: 24px;
-            font-size: 0.95rem;
         }
 
-        /* Ô nhập liệu */
-        .input-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid #475569;
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        input:focus {
-            border-color: #38bdf8;
-        }
-
-        /* Nút bấm */
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        button {
+        .btn {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
             padding: 12px 24px;
             border-radius: 8px;
-            border: none;
-            font-size: 1rem;
+            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
             transition: 0.2s;
         }
 
-        .btn-primary {
-            background-color: #38bdf8;
-            color: #0f172a;
-            flex: 1;
-        }
-
-        .btn-primary:hover {
+        .btn:hover {
             background-color: #7dd3fc;
-        }
-
-        .btn-secondary {
-            background-color: #334155;
-            color: #f8fafc;
-        }
-
-        .btn-secondary:hover {
-            background-color: #475569;
-        }
-
-        /* Khu vực hiển thị kết quả tương tác */
-        #ket-qua {
-            margin-top: 20px;
-            padding: 14px;
-            border-radius: 8px;
-            background-color: rgba(56, 189, 248, 0.1);
-            border: 1px solid #38bdf8;
-            color: #38bdf8;
-            display: none; /* Ẩn mặc định, chỉ hiện khi bấm nút */
-        }
-
-        .hidden {
-            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Màn hình 1: Bảng chào mừng -->
-    <div id="man-hinh-chao" class="container">
+    <div class="container">
         <h1>Chào mừng bạn đến với Website!</h1>
-        <p>Bấm nút bên dưới để mở bảng điều khiển và bắt đầu tương tác.</p>
-        <button class="btn-primary" onclick="moBangTuongTac()">Bắt đầu ngay</button>
+        <p>Trang web của bạn đã hoạt động bình thường và hiển thị bảng thông tin thành công.</p>
+        <a href="#" class="btn">Bắt đầu ngay</a>
     </div>
-
-    <!-- Màn hình 2: Bảng tương tác (Ẩn lúc đầu) -->
-    <div id="man-hinh-chinh" class="container hidden">
-        <h1>Bảng Tương Tác</h1>
-        <p>Nhập tên hoặc nội dung bất kỳ vào ô dưới đây để kiểm tra phản hồi:</p>
-        
-        <div class="input-group">
-            <input type="text" id="o-nhap-ten" placeholder="Nhập tên của bạn...">
-        </div>
-
-        <div class="btn-group">
-            <button class="btn-primary" onclick="xuLyDuLieu()">Gửi thông tin</button>
-            <button class="btn-secondary" onclick="quayLai()">Quay lại</button>
-        </div>
-
-        <div id="ket-qua"></div>
-    </div>
-
-    <script>
-        // Hàm chuyển từ bảng chào sang bảng tương tác
-        function moBangTuongTac() {
-            document.getElementById("man-hinh-chao").classList.add("hidden");
-            document.getElementById("man-hinh-chinh").classList.remove("hidden");
-        }
-
-        // Hàm quay lại bảng chào
-        function quayLai() {
-            document.getElementById("man-hinh-chinh").classList.add("hidden");
-            document.getElementById("man-hinh-chao").classList.remove("hidden");
-            document.getElementById("ket-qua").style.display = "none";
-        }
-
-        // Hàm xử lý khi người dùng nhập liệu và bấm Gửi
-        function xuLyDuLieu() {
-            const ten = document.getElementById("o-nhap-ten").value.trim();
-            const hopKetQua = document.getElementById("ket-qua");
-
-            if (ten === "") {
-                alert("Vui lòng nhập nội dung trước khi bấm gửi!");
-                return;
-            }
-
-            hopKetQua.style.display = "block";
-            hopKetQua.innerHTML = "Xin chào <strong>" + ten + "</strong>! Hệ thống đã ghi nhận tương tác của bạn.";
-        }
-    </script>
 
 </body>
 </html>
